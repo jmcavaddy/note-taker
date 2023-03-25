@@ -25,6 +25,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// GET request to /api/notes to retrieve all notes from the db
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -33,6 +34,7 @@ const getNotes = () =>
     },
   });
 
+// POST request to /api/notes to save a new note to the db 
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -42,6 +44,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+// DELETE request to /api/notes/:id to delete a note from the db
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -50,6 +53,11 @@ const deleteNote = (id) =>
     },
   });
 
+// if there is a saved activeNote (ie if the note has an id) display it and hide the save button
+// and make the title and text areas the notes content and readonly
+
+// if there is no activeNote, display a blank note and hide the delete button
+// and make the title and text areas editable
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -66,12 +74,14 @@ const renderActiveNote = () => {
   }
 };
 
+// Get the note data from the inputs, save it to the db and update the view
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
   };
   saveNote(newNote).then(() => {
+
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -126,7 +136,7 @@ const renderNoteList = async (notes) => {
   let noteListItems = [];
 
   // Returns HTML element with or without a delete button
-  const createLi = (text, delBtn = true) => {
+  const createLi = (text, delBtn = false) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
 
