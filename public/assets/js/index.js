@@ -58,6 +58,7 @@ const deleteNote = (id) =>
 
 // if there is no activeNote, display a blank note and hide the delete button
 // and make the title and text areas editable
+
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
