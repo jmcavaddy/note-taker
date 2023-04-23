@@ -12,6 +12,7 @@ This application was created for individuals to keep track of important tasks an
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
+  - [Preview](#preview)
   - [Questions](#questions)
 
 ## Installation
@@ -29,6 +30,13 @@ To contribute to this project, contact me on GitHub.
 
 ## Tests
 There are currently no tests available for Note Taker.
+
+## Preview
+Note Taker's landing page:
+![Screenshot of Note Taker's landing page](screenshots/note-taker-landing-page.png)  
+
+Note Taker's note manager page with a note selected for viewing:
+![Screenshot of Note Taker's note manager page with a note selected for viewing](screenshots/note-taker-saved-notes.png)
 
 ## Questions
 Contact me with questions regarding this software and view more of my work at my [GitHub page](https://github.com/jmcavaddy)!
