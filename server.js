@@ -1,5 +1,11 @@
 const express = require('express');
 const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+const {
+  readFromFile,
+  readAndAppend,
+  writeToFile,
+} = require('./helpers/fsUtils');
 
 const PORT = 3001;
 
@@ -19,8 +25,33 @@ app.get('/api/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/db/db.json'))
 );
 
+// POST Route for notes api
 app.post('/api/notes', (req, res) => {
-  console.log(req.body);
+  const { title, text } = req.body;
+
+  // If all the required properties are present
+  if (title && text) {
+    // Variable for the object we will save
+    const newNote = {
+      title,
+      text,  
+      id: uuidv4(),
+    };
+
+    console.log(newNote);
+
+
+    readAndAppend(newNote, './db/db.json');
+
+    const response = {
+      status: 'success',
+      body: newNote,
+    };
+
+    res.json(response);
+  } else {
+    res.json('Error in posting note');
+  }
 });
 
 // GET Route for homepage/wildcard route
