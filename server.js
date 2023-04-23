@@ -54,6 +54,23 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const noteId = req.params.id;
+  console.log(noteId);
+  readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Function to filter out the note with the ID provided in the URL
+      const result = json.filter((note) => note.id !== noteId);
+
+      // Save that array to the filesystem
+      writeToFile('./db/db.json', result);
+
+      // Respond to the DELETE request
+      res.json(`Item ${noteId} has been deleted 🗑️`);
+    });
+});
+
 // GET Route for homepage/wildcard route
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -62,6 +79,3 @@ app.get('*', (req, res) =>
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
-
-
-    
