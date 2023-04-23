@@ -15,7 +15,7 @@ This application was created for individuals to keep track of important tasks an
   - [Questions](#questions)
 
 ## Installation
-You can use Note Tracker at (website).
+You can use Note Tracker [here](https://fast-earth-18165.herokuapp.com/).
 
 ## Usage
 The landing page displays a link that takes the user to the note manager. From there, the user can view a list of saved notes on the left half of the screen and delete or view notes from that list. When viewing a saved note, the note's title and content populate the right half of the screen. When the user presses the "+" (plus sign) in the top right corner, the right half of the screen accepts text for a new note's title and content which can be saved using the file button that appears in the top right.
