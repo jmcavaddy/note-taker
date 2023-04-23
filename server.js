@@ -79,5 +79,5 @@ app.get('*', (req, res) =>
 );
 
 app.listen(process.env.PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
+  console.log(`App listening at http://localhost:${process.env.PORT} 🚀`)
 );
